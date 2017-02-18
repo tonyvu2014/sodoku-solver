@@ -1,2 +1,2 @@
-# sodoku-solver
+# sudoku-solver
 A sudoku solver program
