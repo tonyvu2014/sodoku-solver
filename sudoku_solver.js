@@ -16,7 +16,7 @@ function getSetIntersection(firstSet, secondSet) {
 }
 
 function getMissingValueSet(currentSet, size) {
-  let completeValueSet = createCompleteValueSet(size);
+	let completeValueSet = createCompleteValueSet(size);
 	return new Set([...completeValueSet].filter(x => !currentSet.has(x)));
 }
 
@@ -37,14 +37,14 @@ function getColumns(board) {
 }
 
 function getValueSet(row) {
-  return new Set(row.filter(x => x > 0));
+	return new Set(row.filter(x => x > 0));
 }
 
 function getMissingValues(board) {
 	let missingValues = [];
 	let size = board.length;
 	for (let row of board) {
-	  let missingValueSet = getMissingValueSet(getValueSet(row), size);
+		let missingValueSet = getMissingValueSet(getValueSet(row), size);
 		missingValues.push(missingValueSet);
 	}
 	
@@ -66,7 +66,6 @@ function getMissingCells(board) {
 
 function solveForBoard(board) {
 	let solvedBoard = board.slice();
-    printBoard(solvedBoard); 
 	
 	let missingValueByRows = getMissingValues(solvedBoard);
 	let columns = getColumns(solvedBoard);
@@ -82,7 +81,7 @@ function solveForBoard(board) {
 		progress = false;
 		let toBeRemoved = [];
 		for (let i = 0; i < missingCells.length; i++) {
-		    let missingCell = missingCells[i];
+			let missingCell = missingCells[i];
 			let rowIndex = missingCell[0];
 			let columnIndex = missingCell[1];
 
@@ -99,16 +98,19 @@ function solveForBoard(board) {
 				toBeRemoved.push(missingCell);
 				progress = true;
 			}	
-	    }
-		
-		for (let cell of toBeRemoved) {
-			let index = missingCells.indexOf(cell);
-			missingCells.splice(index, 1);
 		}
 		
+		removeValues(missingCells, toBeRemoved);
 	}
 	
 	return solvedBoard;
+}
+
+function removeValues(array, values) {
+	for (let v of values) {
+		let index = array.indexOf(v);
+		array.splice(index, 1);
+	}
 }
 
 let testBoard = [[0,2,4,0], [0,0,0,2],[3,0,0,0], [0,1,3,0]];
@@ -116,6 +118,6 @@ let solvedBoard = solveForBoard(testBoard);
 if (!solvedBoard) {
 	console.log("No Solutions");
 } else {
-    printBoard(solvedBoard);
+	printBoard(solvedBoard);
 }
 
