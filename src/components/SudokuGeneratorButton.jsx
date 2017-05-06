@@ -6,7 +6,7 @@ import './SudokuGeneratorButton.css';
 const SudokuGeneratorButton = ({ generatePuzzleFunc }) => (
   <Button
     bsSize="lg"
-    bsStyle="primary"
+    bsStyle="default"
     active
     className="generator-button"
     onClick={generatePuzzleFunc()}
