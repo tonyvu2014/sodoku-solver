@@ -4,12 +4,12 @@ import ld from 'lodash';
 import './SudokuPuzzle.css';
 
 const SudokuPuzzle = ({ values }) => (
-  <table className="puzzle-table" style={{ borderWidth: '1px', borderColor: 'black', borderStyle: 'solid' }}>
+  <table className="puzzle-table">
     <tbody>
       {
         ld.range(9).map(i => (
-          <tr key={i} style={{ borderWidth: '1px', borderColor: 'black', borderStyle: 'solid' }}>
-            {ld.range(9).map(j => (<td key={`${i}-${j}`} style={{ borderWidth: '1px', borderColor: 'black', borderStyle: 'solid' }}>{values[i][j]}</td>))}
+          <tr key={i} className="puzzle-row">
+            {ld.range(9).map(j => (<td key={`${i}-${j}`} className="puzzle-cell">{values[i][j]}</td>))}
           </tr>
         ))
       }
