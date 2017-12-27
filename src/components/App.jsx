@@ -8,11 +8,11 @@ class App extends Component {
 
   static getValues(puzzle) {
     const cells = new Array(9);
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < 9; i += 1) {
       cells[i] = new Array(9);
-      for (let j = 0; j < 9; j++) {
-        if (puzzle[9*i+j] !== null) {
-          cells[i][j] = puzzle[9*i+j]+1;
+      for (let j = 0; j < 9; j += 1) {
+        if (puzzle[(9 * i) + j] !== null) {
+          cells[i][j] = puzzle[(9 * i) + j] + 1;
         } else {
           cells[i][j] = null;
         }
@@ -24,12 +24,12 @@ class App extends Component {
 
   static getPuzzle(values) {
     const puzzle = new Array(81);
-    for (let i = 0; i < 9; i++) {
-      for (let j = 0; j < 9; j++) {
+    for (let i = 0; i < 9; i += 1) {
+      for (let j = 0; j < 9; j += 1) {
         if (values[i][j] !== null) {
-          puzzle[9*i+j] = values[i][j]-1;
+          puzzle[(9 * i) + j] = values[i][j] - 1;
         } else {
-          puzzle[9*i+j] = null;
+          puzzle[(9 * i) + j] = null;
         }
       }
     }
