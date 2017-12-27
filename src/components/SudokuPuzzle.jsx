@@ -9,7 +9,14 @@ const SudokuPuzzle = ({ values }) => (
       {
         ld.range(9).map(i => (
           <tr key={i} className="puzzle-row">
-            {ld.range(9).map(j => (<td key={`${i}-${j}`} className="puzzle-cell">{values[i][j]}</td>))}
+            {ld.range(9).map(j => (
+              <td
+                key={`${i}-${j}`}
+                className={`puzzle-cell ${(j + 1) % 3 === 0 ? 'box-right' : ''} ${(i + 1) % 3 === 0 ? ' box-bottom' : ''}`}
+              >
+                {values[i][j]}
+              </td>
+            ))}
           </tr>
         ))
       }

@@ -13,3 +13,11 @@
   height: 30px;
   text-align: center;
 }
+
+.box-right {
+  border-right: 2px black solid;
+}
+
+.box-bottom {
+  border-bottom: 2px black solid;
+}
